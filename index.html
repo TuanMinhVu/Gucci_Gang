@@ -13,9 +13,9 @@
             border: 3px solid green;
             background-color: darkgreen;
             background-image: url("ground.png");
-
             border-radius: 20px;
         }
+
     </style>
 
 </head>
@@ -44,7 +44,7 @@
         };
 
    var map = [
-        [3, 3, 3, 0, 4, 4, 4, 0, 3, 3, 3],
+        [3, 3, 3, 3, 4, 4, 4, 3, 3, 3, 3],
         [3, 0, 0, 0, 4, 4, 4, 0, 0, 0, 3],
         [3, 0, 0, 0, 0, 0, 4, 0, 0, 0, 3],
         [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3],
@@ -57,13 +57,9 @@
         [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
     ];
     var numOfBricks = 0;
-    /*var numOfItems = Math.floor(Math.random()*3);
+    var numOfItems = Math.floor(Math.random()*2);
     var item = 0;
-    if(item < numOfItems)
-    {
-        map[i][j] = Math.floor(Math.random() * 4 + 5);
-        item++;
-    }*/
+
     for (var i=0; i < 11; i++)
     {
         for (var j = 0; j < 11; j++)
@@ -94,7 +90,8 @@
         if(player.positionX < 3)
         {
             player.positionX++;
-        } else player.positionX = 0
+        } else
+            player.positionX = 0
     }
 
 
@@ -103,7 +100,8 @@
         if(player.positionX < 8)
         {
             player.positionX++;
-        } else player.positionX = 4;
+        } else
+            player.positionX = 4;
     }
     function onKeyDown(e)
     {
@@ -212,7 +210,6 @@
          sword: 2
      };
 
-
     var pistolBullet = [];
 
     function drawBullet()
@@ -223,15 +220,18 @@
                 {
                     col: player.col,
                     row: player.row,
+                    position: player.positionY,
                     img: new Image()
                 };
             bullet.img.src = "stylesheet.png";
             pistolBullet.push(bullet)
         }
 
+
+
         for (var i = 0; pistolBullet[i] !== undefined; i++)
         {
-            switch (player.positionY)
+            switch (pistolBullet[i].position)
             {
                 case 0:
                     pistolBullet[i].row++;
@@ -251,7 +251,12 @@
             {
                 if(map[pistolBullet[i].row][pistolBullet[i].col] === 2 || map[pistolBullet[i].row][pistolBullet[i].col] === undefined)
                 {
-                    map[pistolBullet[i].row][pistolBullet[i].col] = Math.floor(Math.random()*2);
+                    if(item < numOfItems)
+                    {
+                        map[pistolBullet[i].row][pistolBullet[i].col] = Math.floor(Math.random() * 4 + 5);
+                        item++;
+                    } else map[pistolBullet[i].row][pistolBullet[i].col] = Math.floor(Math.random()*2);
+
                     pistolBullet.splice(i,1);
                 }
             } else pistolBullet.splice(i,1);
@@ -309,6 +314,9 @@
                     case 8:
                         ctx.drawImage(mapImage, 96, 0, 48, 46, 72 * j , 69 * i, 72, 69);
                         break;
+                    case 9:
+                        ctx.drawImage(mapImage, 192 , 0, 48, 46, 72 * j , 69 * i, 72, 69);
+                        break;
                 }
 
             }
@@ -318,7 +326,7 @@
         //ctx.drawImage(zombie.img, 25 * 2, 35 * 3, 45, 45, 72 * zombie.col, 69 * zombie.row, 60, 60);
         drawBullet();
 
-        for ( var i=0; i < pistolBullet.length; i++)
+        for ( var i = 0; i < pistolBullet.length; i++)
         {
             ctx.beginPath();
             ctx.arc(pistolBullet[i].col * 72 + 10, pistolBullet[i].row * 69 + 20, 5, 0, Math.PI*2, true);
