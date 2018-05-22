@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Healthbar for Crimson Quake</title>
+    <meta name="description" content="Healthbar">
+    <meta name="author" content="Nick Sirju">
+    <meta name="keywords" content="HTML,CCS,Javascript">
+</head>
+
+    <style>
+
+    .health-bar {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 200px;
+        height:20px;
+        padding:5px;
+        background: #ddd;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        position:relative;
+    }
+
+    .bar {
+        background: green;
+        width: 100%;
+        height: 10px;
+        position: relative;
+        transition: width .5s linear;
+    }
+
+    .hit{
+        background: rgba(255,255,255,0.6);
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 0;
+        transition: width .5s linear;
+    }
+
+    </style>
+
+<body>
+
+    <div class="health-bar" data-total="100" data-value="100">
+        <div class="bar">
+            <div class="hit"></div>
+                </div>
+                    </div>
+
+        <br />
+
+
+    <div class="log">
+        <div>Where's the leak, ma'am?</div>
+    </div>
+
+
+    <script>
+
+        $(document).ready(function(){
+            var hitBtn = $('button.damage'),
+                reset = $('button.reset'),
+                hBar = $('.health-bar'),
+                bar = hBar.find('.bar'),
+                hit = hBar.find('.hit');
+
+            hitBtn.on("click", function() {
+                var total = hBar.data('total'),
+                    value = hBar.data('value');
+
+                if(value < 0){
+                    log("You are so fricken dead! Try again.");
+                    return;
+                }
+                //max damange is essentially does quarter damange
+                var damage = Math.floor(math.random()*total);
+                // damage = 10;
+                var newValue = value - damage;
+                //calculate the total percentage of the total width
+                var barWidth = (newValue / total) * 10;
+                var hitWidth = (damage / value) * 10 + "%";
+
+                //show hit bar and set the width
+                hit.css('width', hitWidth);
+                hBar.data('value', newValue);
+
+                setTimeout(function () {
+                    hit.css({'width': '0'});
+                    bar.css('width', barWidth + "%");
+                }, 50);
+                //bar.css('width', total - value);
+
+                log(value,damage,hitWidth);
+
+                if(value < 0){
+                    log("DOOMED");
+                }
+            });
+
+            reset.on('click', function (event) {
+                hBar.data('value', hBar.data('total'));
+                hit.css({'width': 0});
+                bar.css('width','100%');
+                log("resetting health to 100");
+            });
+        });
+
+            function log(_total,_damage,_hitWidth) {
+                var log = $('.log');
+
+                if(_damage !== undefined && _hitWidth !== undefined){
+                    log.append("<div>H:"+_total+" D:"+_damage+" W:"+_hitWidth+" = " + (_total - _damage) + "</div>");
+                }
+                else {
+                    log.append("<div>" + _total + "</div>")
+                }
+            }
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>
