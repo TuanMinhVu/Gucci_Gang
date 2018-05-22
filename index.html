@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Team" content="Gucci_Gang">
+    <meta name="author" content="Michael">
+
+    <title>Shooting Game</title>
+
+    <style>
+        #canvas
+        {
+            border: 3px solid green;
+            background-color: darkgreen;
+            background-image: url("ground.png");
+
+            border-radius: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<script>
+
+    var canvas = document.getElementById("canvas");
+    canvas.width = 792;
+    canvas.height = 759;
+    var ctx = canvas.getContext("2d");
+
+    var mapImage = new Image();
+    mapImage.src = "stylesheet.png";
+
+    var playerImage = new Image();
+    playerImage.src = "player.png";
+    var player =
+        {
+            col: Math.floor(Math.random()* 9 + 1),
+            row: 8,
+            positionX: 0,
+            positionY: 0,
+            img: playerImage
+        };
+
+   var map = [
+        [3, 3, 3, 0, 4, 4, 4, 0, 3, 3, 3],
+        [3, 0, 0, 0, 4, 4, 4, 0, 0, 0, 3],
+        [3, 0, 0, 0, 0, 0, 4, 0, 0, 0, 3],
+        [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3],
+        [3, 0, 0, 0, 0, 0, 0, 4, 2, 0, 3],
+        [3, 0, 2, 0, 0, 2, 0, 0, 0, 0, 3],
+        [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3],
+        [3, 0, 0, 2, 0, 0, 2, 0, 0, 0, 3],
+        [3, 0, 0, 0, 4, 0, 0, 0, 0, 0, 3],
+        [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3],
+        [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+    ];
+    var numOfBricks = 0;
+    /*var numOfItems = Math.floor(Math.random()*3);
+    var item = 0;
+    if(item < numOfItems)
+    {
+        map[i][j] = Math.floor(Math.random() * 4 + 5);
+        item++;
+    }*/
+    for (var i=0; i < 11; i++)
+    {
+        for (var j = 0; j < 11; j++)
+        {
+
+            if (map[i][j] !== 3 && map[i][j] !== 4 && map[i][j] !== 2)
+            {
+
+                if (numOfBricks <= 35)
+                {
+                    map[i][j] = Math.floor(Math.random() * 3 );
+                    numOfBricks++;
+                }
+                else map[i][j] = Math.floor(Math.random() * 2);
+            }
+        }
+    }
+
+    var spacePressed = false;
+    var upPressed = false;
+    var downPressed = false;
+    var leftPressed = false;
+    var rightPressed = false;
+    window.addEventListener("keydown", onKeyDown, false);
+    window.addEventListener("keyup", onKeyUp, false);
+    function animation()
+    {
+        if(player.positionX < 3)
+        {
+            player.positionX++;
+        } else player.positionX = 0
+    }
+
+
+    function fireAnimation()
+    {
+        if(player.positionX < 8)
+        {
+            player.positionX++;
+        } else player.positionX = 4;
+    }
+    function onKeyDown(e)
+    {
+        switch(e.keyCode)
+        {
+            case 37:
+                leftPressed = true;
+                animation();
+                player.positionY = 3;
+                break;
+            case 38:
+                upPressed = true;
+                player.positionY = 2;
+                animation();
+                break;
+            case 39:
+                rightPressed = true;
+                animation();
+                player.positionY = 1;
+                break;
+            case 40:
+                downPressed = true;
+                player.positionY = 0;
+                animation();
+                break;
+            case 32:
+                spacePressed = true;
+                fireAnimation();
+                break;
+        }
+    }
+
+    function onKeyUp(e)
+    {
+        switch(e.keyCode)
+        {
+            case 37:
+                leftPressed = false;
+                player.positionX = 0;
+                player.positionY = 3;
+                break;
+            case 38:
+                upPressed = false;
+                player.positionX = 0;
+                player.positionY = 2;
+                break;
+            case 39:
+                rightPressed = false;
+                player.positionX = 0;
+                player.positionY = 1;
+                break;
+            case 40:
+                downPressed = false;
+                player.positionX = 0;
+                player.positionY = 0;
+                break;
+            case 32:
+                spacePressed = false;
+                player.positionX = 0;
+                break;
+        }
+    }
+
+ function movePlayer()
+ {
+
+    if (leftPressed && player.col > 0 && player.positionY === 3)
+    {
+        if (map[player.row][player.col - 1] !== 3 && map[player.row][player.col - 1] !== 2)
+        {
+            player.col -= 1;
+        }
+    }
+
+    if (downPressed && player.row < 9 && player.positionY === 0)
+    {
+        if (map[player.row + 1][player.col] !== 3 && map[player.row + 1][player.col] !== 2)
+        {
+            player.row += 1;
+        }
+
+    }
+
+    if (rightPressed && player.col < 9 && player.positionY === 1)
+    {
+        if (map[player.row][player.col + 1] !== 3 && map[player.row][player.col + 1] !== 2)
+        {
+            player.col += 1;
+        }
+    }
+
+    if (upPressed && player.row > 0 && player.positionY === 2)
+    {
+        if (map[player.row - 1][player.col] !== 3 && map[player.row - 1][player.col] !== 2)
+        {
+            player.row -= 1;
+        }
+    }
+
+ }
+ var numBullets =
+     {
+         pistol: 3,
+         ak47: 10,
+         grenade: 1,
+         sword: 2
+     };
+
+
+    var pistolBullet = [];
+
+    function drawBullet()
+    {
+        if (spacePressed && pistolBullet.length < numBullets.pistol)
+        {
+            var bullet =
+                {
+                    col: player.col,
+                    row: player.row,
+                    img: new Image()
+                };
+            bullet.img.src = "stylesheet.png";
+            pistolBullet.push(bullet)
+        }
+
+        for (var i = 0; pistolBullet[i] !== undefined; i++)
+        {
+            switch (player.positionY)
+            {
+                case 0:
+                    pistolBullet[i].row++;
+                    break;
+                case 1:
+                    pistolBullet[i].col++;
+                    break;
+                case 2:
+                    pistolBullet[i].row--;
+                    break;
+                case 3:
+                    pistolBullet[i].col--;
+                    break;
+            }
+            console.log(pistolBullet[i].row);
+            if(pistolBullet[i].row >= 0 && pistolBullet[i].row < 10)
+            {
+                if(map[pistolBullet[i].row][pistolBullet[i].col] === 2 || map[pistolBullet[i].row][pistolBullet[i].col] === undefined)
+                {
+                    map[pistolBullet[i].row][pistolBullet[i].col] = Math.floor(Math.random()*2);
+                    pistolBullet.splice(i,1);
+                }
+            } else pistolBullet.splice(i,1);
+        }
+    }
+
+    /*var zombie =
+        {
+            col: Math.floor(Math.random()*3 + 4),
+            row: 0,
+            img: new Image()
+        };
+    zombie.img.src = "zombie.png";*/
+
+
+    update();
+    function update()
+    {
+        ctx.clearRect(0, 0, canvas.height, canvas.width);
+        for (var i=0; i < 11; i++)
+        {
+            for(var j=0; j < 11; j++)
+            {
+
+                switch (map[i][j])
+                {
+                    case 0:
+                    case 4:
+                        ctx.drawImage(mapImage, 0, 46, 48, 46, 72 * j, 69 * i, 72, 69);
+                        break;
+
+                    case 1:
+                        ctx.drawImage(mapImage, 48, 46, 48, 46, 72 * j , 69 * i, 72, 69);
+                        break;
+
+                    case 2:
+                        ctx.drawImage(mapImage, 144, 46, 48, 46, 72 * j , 69 * i, 72, 69);
+                        break;
+
+                    case 3:
+                        ctx.drawImage(mapImage, 96, 46, 48, 46, 72 * j , 69 * i, 72, 69);
+                        break;
+                    case 5:
+                        ctx.drawImage(mapImage, 0, 0, 48, 46, 72 * j, 69 * i, 72, 69);
+                        break;
+
+                    case 6:
+                        ctx.drawImage(mapImage, 48, 0, 48, 46, 72 * j , 69 * i, 72, 69);
+                        break;
+
+                    case 7:
+                        ctx.drawImage(mapImage, 144, 0, 48, 46, 72 * j , 69 * i, 72, 69);
+                        break;
+
+                    case 8:
+                        ctx.drawImage(mapImage, 96, 0, 48, 46, 72 * j , 69 * i, 72, 69);
+                        break;
+                }
+
+            }
+        }
+        movePlayer();
+        ctx.drawImage(playerImage, 32 * player.positionX, 35 * player.positionY, 32, 35, 73 * player.col, 69 * player.row, 64, 65);
+        //ctx.drawImage(zombie.img, 25 * 2, 35 * 3, 45, 45, 72 * zombie.col, 69 * zombie.row, 60, 60);
+        drawBullet();
+
+        for ( var i=0; i < pistolBullet.length; i++)
+        {
+            ctx.beginPath();
+            ctx.arc(pistolBullet[i].col * 72 + 10, pistolBullet[i].row * 69 + 20, 5, 0, Math.PI*2, true);
+            ctx.closePath();
+            ctx.fillStyle = 'red';
+            ctx.fill();
+        }
+        setTimeout(function(){requestAnimationFrame(update);}, 1000/10);
+    }
+
+</script>
+
+</body>
+</html>
