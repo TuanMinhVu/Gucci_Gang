@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Team" content="Gucci_Gang">
+    <meta name="author" content="Michael">
+    <title>Shooting Game</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div id="gameWorld">
+
+    <div id="score" class="UI"></div>
+    <div id="timer" class="UI"></div>
+
+    <div id="dialog">
+
+        <img src="Images/Character.png">
+        <p id="text" class="UI"></p>
+        <progress id="progress" value="30" max="30"></progress>
+        <progress id="health" value="3" max="3"></progress>
+
+    </div>
+
+    <div id="instructions" class="UI">
+
+        <p>Movement: ↑ → ← ↓</p>
+        <p>Shoot: Space</p>
+        <p>Pause: P</p>
+        <p>Objective: It's pretty simple, Kill or be killed !!!</p>
+
+
+    </div>
+
+    <canvas  id="canvas"></canvas>
+    <div id = "gameTitle" class="UI">CRIMSON INVASION</div>
+        <button class = "buttons" id = "start" class="UI">START</button>
+        <button class = "buttons" id = "scoreButton" class="UI">SCORE</button>
+        <button class = "buttons" id = "setting" class="UI">SETTING</button>
+        <button class="buttons" id="back">BACK</button>
+        <button class="buttons" id="light" class="UI">Lights : On</button>
+        <button class="buttons" id="sound" class="UI">Sound : On</button>
+        <button class="buttons" id="hud" class="UI">HUD : On</button>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
