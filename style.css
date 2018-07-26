@@ -1,0 +1,181 @@
+@font-face {
+    font-family: 'MyFontName'; /*a name to be used later*/
+    src: url('INVASION2000.TTF');
+}
+progress
+{
+    position: relative;
+    left: 2px;
+    right: 0;
+
+}
+#health::-webkit-progress-value { background: red; }
+
+html
+{
+    width: 100%;
+    height: 100%;
+    background-color: #dddddd;
+}
+
+img
+{
+    float: left;
+    position: relative;
+}
+
+p
+{
+    left: 5px;
+    position: relative;
+}
+
+.UI
+{
+    font-family: "MyFontName";
+    color: red;
+}
+
+#timer
+{
+    font-size: large;
+    display: none;
+}
+
+#instructions
+{
+    position: absolute;
+    left: 10px;
+    top: 190px;
+    max-width: 350px;
+    color: black;
+}
+
+#score
+{
+    top: 30px;
+    font-size: large;
+}
+
+
+
+#dialog
+{
+    width: 320px;
+    height: 125px;
+    top: 50px;
+    left: 2px;
+    border: 5px solid saddlebrown;
+    background: lightgreen;
+    font-size: large;
+    display: none;
+    border-radius: 20px;
+    position: absolute;
+}
+
+#gameWorld
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("Images/bg.jpg");
+    background-color: black;
+
+}
+
+#canvas
+{
+    left: 25%;
+    border: 1px solid green;
+    border-radius: 20px;
+    position: relative;
+    filter:  opacity(50%) blur(10px);
+}
+
+.buttons
+{
+
+    height: 80px;
+    width: 150px;
+    border-radius: 20px;
+    border: 5px solid red;
+    font-weight: bold;
+    font-size: large;
+    background-image: url("Images/ground.png");
+    left: 48%;
+    font-family: "MyFontName";
+    color: red;
+    float: left;
+    position: absolute;
+
+}
+
+progress
+{
+    width: 200px;
+    height: 8px;
+    border-radius: 3px;
+    border: 1px solid #0063a6;
+    background: #fff;
+}
+
+.buttons:hover
+{
+    color: saddlebrown;
+}
+
+.buttons:active
+{
+    background-image: url("Images/ground.png");
+    box-shadow: 0 10px brown;
+    transform: translateY(5px);
+}
+
+#start
+{
+    top: 350px;
+}
+
+#scoreButton
+{
+    top: 450px;
+    clear: left;
+}
+#back
+{
+    top: 650px;
+    clear: left;
+}
+
+#setting
+{
+    top: 550px;
+    clear: left;
+}
+
+#light
+{
+    top: 350px;
+}
+
+#sound
+{
+    top: 450px;
+    clear: left;
+}
+
+#hud
+{
+    top: 550px;
+    clear: left;
+}
+
+#gameTitle
+{
+    top: 170px;
+    left: 33%;
+    font-size: 60px;
+    text-shadow: 3px 7px green;
+    font-weight: bold;
+    position: absolute;
+}
