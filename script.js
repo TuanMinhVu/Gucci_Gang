@@ -687,8 +687,8 @@ function collision()
         {
 
 
-            if ((zombies[i].col === currentBullet[j].col && zombies[i].row * 40 + 10 > currentBullet[j].row * 40  && zombies[i].row * 40 - 10 < currentBullet[j].row * 40 )
-                || (zombies[i].row === currentBullet[j].row && zombies[i].col * 42 + 10 > currentBullet[j].col * 42 && zombies[i].col * 42 - 10 < currentBullet[j].col * 42)
+            if ((zombies[i].col === currentBullet[j].col && zombies[i].row * 40 + 30 > currentBullet[j].row * 40  && zombies[i].row * 40 - 30 < currentBullet[j].row * 40 )
+                || (zombies[i].row === currentBullet[j].row && zombies[i].col * 42 + 30 > currentBullet[j].col * 42 && zombies[i].col * 42 - 30 < currentBullet[j].col * 42)
                 || (zombies[i].col === currentBullet[j].col && zombies[i].row === currentBullet[j].row)
             )
             {
@@ -711,8 +711,8 @@ function collision()
 
     for (var i = 0; zombies[i] !== undefined; i++)
     {
-        if ((zombies[i].col === player.col && zombies[i].row * 40 + 10 > player.row * 40  && zombies[i].row * 40 - 10 < player.row * 40 )
-            || (zombies[i].row === player.row && zombies[i].col * 42 + 10 > player.col * 42 && zombies[i].col * 42 - 10 < player.col * 42)
+        if ((zombies[i].col === player.col && zombies[i].row * 40 + 20 > player.row * 40  && zombies[i].row * 40 - 20 < player.row * 40 )
+            || (zombies[i].row === player.row && zombies[i].col * 42 + 20 > player.col * 42 && zombies[i].col * 42 - 20 < player.col * 42)
             ||(zombies[i].col === player.col && zombies[i].row === player.row))
         {
             hitHurt.play();
