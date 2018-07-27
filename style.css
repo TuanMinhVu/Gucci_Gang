@@ -51,11 +51,11 @@ p
     color: black;
 }
 
-#score
+/*#score
 {
     top: 30px;
     font-size: large;
-}
+}*/
 
 
 
@@ -149,7 +149,7 @@ progress
 
 #setting
 {
-    top: 550px;
+    top: 450px;
     clear: left;
 }
 
