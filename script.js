@@ -719,7 +719,7 @@ startButton.style.display = "block";
 settingButton.style.display = "block";
 scoreButton.style.display = "block";
 dialog.style.display = "none";
-gameTitle.style.left = "40%";
+gameTitle.style.left = "35%";
 canvas.style.filter = "opacity(50%) blur(10px)";
 if(health === 0) gameTitle.innerHTML = "GAME OVER, BABY! ";
 else gameTitle.innerHTML = "TIME'S UP";
