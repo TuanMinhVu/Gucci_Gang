@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Updated Game</title>
-</head>
-<body>
+
 
 var startButton = document.getElementById("start");
 var scoreButton = document.getElementById("scoreButton");
@@ -874,7 +868,3 @@ setTimeout(function () {requestAnimationFrame(update);}, 1000 / 10);
 
 
 
-
-
-</body>
-<html/>
