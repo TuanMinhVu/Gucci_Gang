@@ -11,7 +11,7 @@ var mapAudioArray = [map1Audio, map2Audio, map3Audio, map4Audio];
 
 var mapIndex = 0;
 var startButton = document.getElementById("start");
-var scoreButton = document.getElementById("scoreButton");
+//var scoreButton = document.getElementById("scoreButton");
 var settingButton = document.getElementById("setting");
 var lightButton=document.getElementById("light");
 var soundButton=document.getElementById("sound");
@@ -58,7 +58,7 @@ function back()
     gameTitle.innerHTML = "CRIMSON INVASION";
     startButton.style.display = "block";
     gameTitle.style.left = "33%";
-    scoreButton.style.display = "block";
+    //scoreButton.style.display = "block";
     settingButton.style.display = "block";
     lightButton.style.display = "none";
     soundButton.style.display = "none";
@@ -74,7 +74,7 @@ function startGame()
         mapAudioArray[mapIndex].load();
 
     startButton.style.display = "none";
-    scoreButton.style.display = "none";
+    //scoreButton.style.display = "none";
     settingButton.style.display = "none";
     gameTitle.style.display = "none";
     canvas.style.filter = "none";
@@ -324,7 +324,7 @@ function onKeyDown(e)
                 gameTitle.style.display = "block";
                 startButton.style.display = "block";
                 settingButton.style.display = "block";
-                scoreButton.style.display = "block";
+               // scoreButton.style.display = "block";
                 dialog.style.display = "none";
                 gameTitle.style.left = "44%";
                 canvas.style.filter = "opacity(50%) blur(10px)";
@@ -687,8 +687,8 @@ function collision()
         {
 
 
-            if ((zombies[i].col === currentBullet[j].col && zombies[i].row * 40 + 30 > currentBullet[j].row * 40  && zombies[i].row * 40 - 30 < currentBullet[j].row * 40 )
-                || (zombies[i].row === currentBullet[j].row && zombies[i].col * 42 + 30 > currentBullet[j].col * 42 && zombies[i].col * 42 - 30 < currentBullet[j].col * 42)
+            if ((zombies[i].col === currentBullet[j].col && zombies[i].row * 40 + 100 > currentBullet[j].row * 40  && zombies[i].row * 40 - 100 < currentBullet[j].row * 40 )
+                || (zombies[i].row === currentBullet[j].row && zombies[i].col * 42 + 10 > currentBullet[j].col * 42 && zombies[i].col * 42 - 10 < currentBullet[j].col * 42)
                 || (zombies[i].col === currentBullet[j].col && zombies[i].row === currentBullet[j].row)
             )
             {
@@ -711,8 +711,8 @@ function collision()
 
     for (var i = 0; zombies[i] !== undefined; i++)
     {
-        if ((zombies[i].col === player.col && zombies[i].row * 40 + 20 > player.row * 40  && zombies[i].row * 40 - 20 < player.row * 40 )
-            || (zombies[i].row === player.row && zombies[i].col * 42 + 20 > player.col * 42 && zombies[i].col * 42 - 20 < player.col * 42)
+        if ((zombies[i].col === player.col && zombies[i].row * 40 + 10 > player.row * 40  && zombies[i].row * 40 - 10 < player.row * 40 )
+            || (zombies[i].row === player.row && zombies[i].col * 42 + 10 > player.col * 42 && zombies[i].col * 42 - 10 < player.col * 42)
             ||(zombies[i].col === player.col && zombies[i].row === player.row))
         {
             hitHurt.play();
@@ -743,7 +743,7 @@ function resetLevel() {
         gameTitle.style.display = "block";
         startButton.style.display = "block";
         settingButton.style.display = "block";
-        scoreButton.style.display = "block";
+        //scoreButton.style.display = "block";
         dialog.style.display = "none";
         gameTitle.style.left = "35%";
         canvas.style.filter = "opacity(50%) blur(10px)";
@@ -841,7 +841,7 @@ function update()
         gameTitle.style.display = "block";
         startButton.style.display = "block";
         settingButton.style.display = "block";
-        scoreButton.style.display = "block";
+       // scoreButton.style.display = "block";
         dialog.style.display = "none";
         gameTitle.style.left = "20%";
         canvas.style.filter = "opacity(50%) blur(10px)";
