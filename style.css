@@ -46,7 +46,7 @@ p
 {
     position: absolute;
     left: 10px;
-    top: 190px;
+    top: 250px;
     max-width: 350px;
     color: black;
 }
@@ -62,7 +62,7 @@ p
 #dialog
 {
     width: 320px;
-    height: 125px;
+    height: 195px;
     top: 50px;
     left: 2px;
     border: 5px solid saddlebrown;
@@ -178,4 +178,32 @@ progress
     text-shadow: 3px 7px green;
     font-weight: bold;
     position: absolute;
+}
+
+#a1
+{
+	font-size:15px;
+	font-family: 'MyFontName';
+}
+
+#progress
+{
+	border-top:1px;
+}
+
+#a2
+{
+	font-family: 'MyFontName';
+	margin-left:95px;
+	font-size:15px;
+}
+
+#health
+{
+		margin-left:95px;
+}
+
+#char
+{
+	top: 50px;
 }
