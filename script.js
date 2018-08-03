@@ -7,7 +7,7 @@ var map3Audio = new Audio();
 map3Audio.src = "Audio/level3.mp3";
 var map4Audio = new Audio();
 map4Audio.src = "Audio/level4.mp3";
-var mapAudioArray = [map1Audio, map2Audio, map3Audio, map4Audio];
+var mapAudioArray = [map1Audio, map2Audio, map3Audio, map4Audio, map1Audio, map2Audio, map3Audio, map4Audio];
 
 var mapIndex = 0;
 var startButton = document.getElementById("start");
@@ -69,9 +69,9 @@ function back()
 var  tick = 60;
 function startGame()
 {
-   // bgMusic.play();
+    // bgMusic.play();
 
-        mapAudioArray[mapIndex].load();
+    mapAudioArray[mapIndex].load();
 
     startButton.style.display = "none";
     //scoreButton.style.display = "none";
@@ -189,7 +189,7 @@ canvas.height = 880;
 canvas.style.backgroundImage = "url('Images/ground.png')";
 var ctx = canvas.getContext("2d");
 var mapImage = new Image();
-mapImage.src = "Images/stylesheet.png";
+mapImage.src = "Images/stylesheettest.png";
 var currentScore = 0;
 var bulletImage = new Image();
 bulletImage.src = "Images/bullet.png";
@@ -262,7 +262,11 @@ var MAP1 = Object.create(MAP);
 var MAP2 = Object.create(MAP);
 var MAP3 = Object.create(MAP);
 var MAP4 = Object.create(MAP);
-var maps = [MAP1, MAP2, MAP3, MAP4];
+var MAP5 = Object.create(MAP);
+var MAP6 = Object.create(MAP);
+var MAP7 = Object.create(MAP);
+var MAP8 = Object.create(MAP);
+var maps = [MAP1, MAP2, MAP3, MAP4, MAP5, MAP6, MAP7, MAP8];
 maps[mapIndex].randomMap();
 
 
@@ -291,22 +295,22 @@ function onKeyDown(e)
 {
     switch (e.keyCode)
     {
-        case 37:
+        case 65:
             leftPressed = true;
             animation();
             player.positionY = 3;
             break;
-        case 38:
+        case 87:
             upPressed = true;
             player.positionY = 2;
             animation();
             break;
-        case 39:
+        case 68:
             rightPressed = true;
             animation();
             player.positionY = 1;
             break;
-        case 40:
+        case 83:
             downPressed = true;
             player.positionY = 0;
             animation();
@@ -324,17 +328,17 @@ function onKeyDown(e)
                 gameTitle.style.display = "block";
                 startButton.style.display = "block";
                 settingButton.style.display = "block";
-               // scoreButton.style.display = "block";
+                // scoreButton.style.display = "block";
                 dialog.style.display = "none";
                 gameTitle.style.left = "44%";
                 canvas.style.filter = "opacity(50%) blur(10px)";
                 gameTitle.innerHTML = "Pause";
             }
             break;
-case 13:
-    numOfBullets = 1000000;
-mapIndex++;
-break;
+      /*  case 13:
+            numOfBullets = 1000000;
+            mapIndex++;
+            break;*/
 
     }
 }
@@ -343,22 +347,22 @@ function onKeyUp(e)
 {
     switch (e.keyCode)
     {
-        case 37:
+        case 65:
             leftPressed = false;
             player.positionX = 0;
             player.positionY = 3;
             break;
-        case 38:
+        case 87:
             upPressed = false;
             player.positionX = 0;
             player.positionY = 2;
             break;
-        case 39:
+        case 68:
             rightPressed = false;
             player.positionX = 0;
             player.positionY = 1;
             break;
-        case 40:
+        case 83:
             downPressed = false;
             player.positionX = 0;
             player.positionY = 0;
@@ -420,7 +424,32 @@ function movePlayer()
                 }
             }
             player.row = 21;
-            numberOfZombie = 10 + mapIndex * 2;
+            switch (mapIndex)
+            {
+                case 1:
+                    numberOfZombie = 12;
+                    break;
+                case 2:
+                    numberOfZombie = 8;
+                    break;
+                case 3:
+                    numberOfZombie = 10;
+                    break;
+                case 4:
+                    numberOfZombie = 8;
+                    break;
+                case 5:
+                    numberOfZombie = 10;
+                    break;
+                case 6:
+                    numberOfZombie = 9;
+                    break;
+                case 7:
+                    numberOfZombie = 11;
+                    break;
+
+            }
+            //numberOfZombie = 10 + mapIndex * 2;
         }
         player.row -= 1;
     }
@@ -542,7 +571,7 @@ var zombie = function ()
     }
 
     this.position = 0;
-    this.health = mapIndex + 1;
+    this.health = Math.floor(mapIndex / 2) + 1;
     this.img = new Image();
     this.img.src = "Images/newEnemies.png";
     this.update_tick = 0 ;
@@ -809,7 +838,7 @@ function updateLevel()
     if (numberOfZombie === 0 && zombies.length === 0)
     {
 
-        tick = 60 + 60 * (mapIndex+1);
+        tick = 60 + 60 * ((Math.floor(mapIndex/2))+1);
         numOfBricks = 0;
         numOfBullets = 30;
         openGateAudio.play();
@@ -829,7 +858,7 @@ update();
 
 function update()
 {
-    if(mapIndex === 3 && zombies.length === 0 & numberOfZombie === 0)
+    if(mapIndex === 7 && zombies.length === 0 & numberOfZombie === 0)
     {
         document.getElementById("timer").style.display = "none";
         explosionAudio.play();
@@ -841,7 +870,7 @@ function update()
         gameTitle.style.display = "block";
         startButton.style.display = "block";
         settingButton.style.display = "block";
-       // scoreButton.style.display = "block";
+        // scoreButton.style.display = "block";
         dialog.style.display = "none";
         gameTitle.style.left = "20%";
         canvas.style.filter = "opacity(50%) blur(10px)";
@@ -905,16 +934,16 @@ function update()
             {
                 case 0:
                 case 4:
-                    ctx.drawImage(maps[mapIndex].img, 0, 46 * mapIndex, 48, 46, 42 * j, 40 * i, 42, 40);
+                    ctx.drawImage(maps[mapIndex].img, 0, 46 * Math.floor(mapIndex / 2), 48, 46, 42 * j, 40 * i, 42, 40);
                     break;
                 case 1:
-                    ctx.drawImage(maps[mapIndex].img, 48, 46 * mapIndex, 48, 46, 42 * j, 40 * i, 42, 40);
+                    ctx.drawImage(maps[mapIndex].img, 48, 46 * Math.floor(mapIndex / 2), 48, 46, 42 * j, 40 * i, 42, 40);
                     break;
                 case 2:
-                    ctx.drawImage(maps[mapIndex].img, 144, 46 * mapIndex, 48, 46, 42 * j, 40 * i, 42, 40);
+                    ctx.drawImage(maps[mapIndex].img, 144, 46 * Math.floor(mapIndex / 2), 48, 46, 42 * j, 40 * i, 42, 40);
                     break;
                 case 3:
-                    ctx.drawImage(maps[mapIndex].img, 96, 46 * mapIndex, 48, 46, 42 * j, 40 * i, 42, 40);
+                    ctx.drawImage(maps[mapIndex].img, 96, 46 * Math.floor(mapIndex / 2), 48, 46, 42 * j, 40 * i, 42, 40);
                     break;
 
             }
