@@ -725,8 +725,8 @@ function collision()
         {
 
 
-            if ((zombies[i].col === currentBullet[j].col && zombies[i].row * 42 + 50 > currentBullet[j].row * 42  && zombies[i].row * 42 - 50 < currentBullet[j].row * 42 )
-                || (zombies[i].row === currentBullet[j].row && zombies[i].col * 40 + 50 > currentBullet[j].col * 40 && zombies[i].col * 40 - 50 < currentBullet[j].col * 40)
+            if ((zombies[i].col === currentBullet[j].col && zombies[i].row * 42 + 60 > currentBullet[j].row * 42  && zombies[i].row * 42 - 60 < currentBullet[j].row * 42 )
+                || (zombies[i].row === currentBullet[j].row && zombies[i].col * 40 + 60 > currentBullet[j].col * 40 && zombies[i].col * 40 - 60 < currentBullet[j].col * 40)
                 || (zombies[i].col === currentBullet[j].col && zombies[i].row === currentBullet[j].row)
             )
             {
@@ -976,7 +976,7 @@ function update()
         drawBullet();
         for (var i = 0; currentBullet[i] !== undefined; i++)
         {
-            ctx.drawImage(bulletImage, 0, 0, 48, 48, currentBullet[i].col * 42, currentBullet[i].row * 40, 20, 20);
+            ctx.drawImage(bulletImage, 0, 0, 48, 48, currentBullet[i].col * 42 + 10, currentBullet[i].row * 40 + 10, 20, 20);
         }
 
         collision();
