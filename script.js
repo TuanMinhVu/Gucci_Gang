@@ -7,7 +7,16 @@ var map3Audio = new Audio();
 map3Audio.src = "Audio/level3.mp3";
 var map4Audio = new Audio();
 map4Audio.src = "Audio/level4.mp3";
-var mapAudioArray = [map1Audio, map2Audio, map3Audio, map4Audio, map1Audio, map2Audio, map3Audio, map4Audio];
+var map5Audio = new Audio();
+map5Audio.src = "Audio/level5.mp3";
+var map6Audio = new Audio();
+map6Audio.src = "Audio/level6.mp3";
+var map7Audio = new Audio();
+map7Audio.src = "Audio/level7.mp3";
+var map8Audio = new Audio();
+map8Audio.src = "Audio/level8.mp3";
+
+var mapAudioArray = [map1Audio, map2Audio, map3Audio, map4Audio, map5Audio, map6Audio, map7Audio, map8Audio];
 
 var mapIndex = 0;
 var startButton = document.getElementById("start");
@@ -932,18 +941,18 @@ function update()
 
             switch (maps[mapIndex].map[i][j])
             {
-                case 0:
+                 case 0:
                 case 4:
-                    ctx.drawImage(maps[mapIndex].img, 0, 46 * Math.floor(mapIndex / 2), 48, 46, 42 * j, 40 * i, 42, 40);
+                    ctx.drawImage(maps[mapIndex].img, 0, 46 * mapIndex, 48, 46, 42 * j, 40 * i, 42, 40);
                     break;
                 case 1:
-                    ctx.drawImage(maps[mapIndex].img, 48, 46 * Math.floor(mapIndex / 2), 48, 46, 42 * j, 40 * i, 42, 40);
+                    ctx.drawImage(maps[mapIndex].img, 48, 46 * mapIndex, 48, 46, 42 * j, 40 * i, 42, 40);
                     break;
                 case 2:
-                    ctx.drawImage(maps[mapIndex].img, 144, 46 * Math.floor(mapIndex / 2), 48, 46, 42 * j, 40 * i, 42, 40);
+                    ctx.drawImage(maps[mapIndex].img, 144, 46 * mapIndex, 48, 46, 42 * j, 40 * i, 42, 40);
                     break;
                 case 3:
-                    ctx.drawImage(maps[mapIndex].img, 96, 46 * Math.floor(mapIndex / 2), 48, 46, 42 * j, 40 * i, 42, 40);
+                    ctx.drawImage(maps[mapIndex].img, 96, 46 * mapIndex, 48, 46, 42 * j, 40 * i, 42, 40);
                     break;
 
             }
