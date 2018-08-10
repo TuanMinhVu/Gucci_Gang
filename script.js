@@ -725,7 +725,7 @@ function collision()
         {
 
 
-            if ((zombies[i].col === currentBullet[j].col && zombies[i].row * 42 + 80 > currentBullet[j].row * 42  && zombies[i].row * 42 - 80 < currentBullet[j].row * 42 )
+            if ((zombies[i].col === currentBullet[j].col && zombies[i].row * 42 + 100 > currentBullet[j].row * 42  && zombies[i].row * 42 - 100 < currentBullet[j].row * 42 )
                 || (zombies[i].row === currentBullet[j].row && zombies[i].col * 40 + 80 > currentBullet[j].col * 40 && zombies[i].col * 40 - 80 < currentBullet[j].col * 40)
                 || (zombies[i].col === currentBullet[j].col && zombies[i].row === currentBullet[j].row)
             )
