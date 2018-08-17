@@ -344,10 +344,10 @@ function onKeyDown(e)
                 gameTitle.innerHTML = "Pause";
             }
             break;
-      /*  case 13:
+      case 13:
             numOfBullets = 1000000;
             mapIndex++;
-            break;*/
+            break;
 
     }
 }
